@@ -19,3 +19,7 @@ function explainParseFloat(value) {
 explainParseFloat("3.14");
 explainParseFloat("42");
 explainParseFloat("42px");
+
+// Directly use it like-
+// parseInt("46px")
+// parseFloat(99)

@@ -14,7 +14,7 @@ function pushExample(arr, element) {
 }
 pushExample([1, 2, 3], 4);
 
-// pop()
+// pop() --> pops element from back
 function popExample(arr) {
   console.log("Original Array:", arr);
 
@@ -23,7 +23,7 @@ function popExample(arr) {
 }
 popExample([1, 2, 3]);
 
-// shift()
+// shift() --> pops element from front
 function shiftExample(arr) {
   console.log("Original Array:", arr);
 
@@ -32,7 +32,7 @@ function shiftExample(arr) {
 }
 shiftExample([1, 2, 3]);
 
-// unshift()
+// unshift() --> pushes element in the front
 function unshiftExample(arr, element) {
   console.log("Original Array:", arr);
 

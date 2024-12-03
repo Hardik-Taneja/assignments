@@ -34,11 +34,11 @@ function getSlice(str, start, end) {
 getSlice("Hello World", 0, 5);
 
 // substring
-function getSubstring(str, start, end) {
+function getSubstring(str, start, length) {
   console.log("Original String:", str);
-  console.log("After substring:", str.substring(start, end));
+  console.log("After substring:", str.substring(start, length));
 }
-getSubstring("Hello World", 0, 5);
+getSubstring("Hello World", 0, 5); //--> starts from 0 & gives 5 characters
 
 // replace
 function replaceString(str, target, replacement) {
@@ -47,14 +47,23 @@ function replaceString(str, target, replacement) {
 }
 replaceString("Hello World", "World", "JavaScript");
 
-// split
+// SPLIT --> jahan jahan par element 
+// let str1 = "apple,banana,orange";
+// console.log(str1.split(",")); // Output: ["apple", "banana", "orange"]
+
+// let str2 = "Hello World";
+// console.log(str2.split(" ")); // Output: ["Hello", "World"]
+
+// let str3 = "JavaScript";
+// console.log(str3.split("")); // Output: ["J", "a", "v", "a", "S", "c", "r", "i", "p", "t"]
+
 function splitString(str, separator) {
   console.log("Original String:", str);
   console.log("After split:", str.split(separator));
 }
 splitString("Hello World", " ");
 
-// trim
+// trim -->It removes the spaces form front and back, doesn't remove beech wali space
 function trimString(str) {
   console.log("Original String:", str);
   console.log("After trim:", str.trim());
