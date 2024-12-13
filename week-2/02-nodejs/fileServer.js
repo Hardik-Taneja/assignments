@@ -17,5 +17,22 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
-
 module.exports = app;
+
+const fileDirectory = path.join(__dirname, 'files'); // 'files' folder in the same directory as this script
+
+app.get("/files/:fileName", function (req, res) {
+    const name = req.params.fileName;
+    console.log(name);
+
+    const filePath = path.join(fileDirectory, name); // Absolute path to the file
+    fs.readFile(filePath, "utf-8", function (err, data) {
+        if (err) {
+            console.error(err); // Log the error
+            return res.status(404).json({ error: "File not found" }); // Respond with a 404
+        }
+        res.json({ data });
+    });
+});
+
+app.listen(3000);

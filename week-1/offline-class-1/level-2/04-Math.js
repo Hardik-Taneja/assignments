@@ -24,6 +24,7 @@ function mathMethods(value) {
 
   let squareRoot = Math.sqrt(value);
   console.log("After sqrt():", squareRoot);
+  console.log('\n');
 }
 
 // Example Usage for Math Methods
