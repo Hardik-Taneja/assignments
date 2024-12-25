@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
 const jwtPassword = 'secret';
+const zod = require('zod');
 
+const emailSchema = zod.string().email();
+const passwordSchema = zod.string().min(6);
 
 /**
  * Generates a JWT for a given username and password.
@@ -14,8 +17,18 @@ const jwtPassword = 'secret';
  *                        the password does not meet the length requirement.
  */
 function signJwt(username, password) {
-    // Your code here
+    const username= emailSchema.safeParse(username);
+    const password= passwordSchema.safeParse(password);
+
+    if(!username.success || !password.success){
+        return null;
+    }
+    const signature = jwt.sign({username}, jwtPassword);
+    return signature;
 }
+
+const ans=jwt.sign("hardiktaneja@gmail.com", "hardik1234");
+console.log(ans);
 
 /**
  * Verifies a JWT using a secret key.
@@ -25,9 +38,20 @@ function signJwt(username, password) {
  *                    Returns false if the token is invalid, expired, or not verified
  *                    using the secret key.
  */
+
+
 function verifyJwt(token) {
-    // Your code here
+    // Assign says to return True/false...If it said to return username then we would have returned username
+    try{
+        jwt.verify(token, jwtPassword);
+        return true;
+    }
+    catch(err){
+        return false;
+    }
 }
+const answer=jwt.verify("jadvhbjd&&");
+console.log(answer);
 
 /**
  * Decodes a JWT to reveal its payload without verifying its authenticity.
@@ -36,9 +60,20 @@ function verifyJwt(token) {
  * @returns {object|false} The decoded payload of the JWT if the token is a valid JWT format.
  *                         Returns false if the token is not a valid JWT format.
  */
+
+
 function decodeJwt(token) {
-    // Your code here
+    // return true/false
+    const decoded=jwt.decode(token);
+    if(decoded){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
+
+console.log(decodeJwt("bvah$%_____"));
 
 
 module.exports = {
